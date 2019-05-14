@@ -31,4 +31,4 @@ Route::get('/admin', 'HomeController@index')->name('admin');
 Route::get('/mamdani/hitung','MamdaniController@index')->name('output');
 // Route::get('/admin/karyawan', 'KaryawanController@index')->name('karyawan');
 Route::resource('karyawan', 'KaryawanController');
-Route::get('/mamdani','KaryawanController@toHitung')->name('toHitung');
+Route::get('/mamdani','MamdaniController@toHitung')->name('toHitung');

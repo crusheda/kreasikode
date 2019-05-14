@@ -138,10 +138,4 @@ class KaryawanController extends Controller
         // redirect
         return \Redirect::to('/karyawan')->with('message','Hapus Data Karyawan Berhasil');
     }
-
-    public function toHitung()
-    {
-        # code...
-        return view('pages.admin.mamdani');
-    }
 }

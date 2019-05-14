@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateKaryawanTable extends Migration
+class RoleFuzzyTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreateKaryawanTable extends Migration
      */
     public function up()
     {
-        Schema::create('karyawan', function (Blueprint $table) {
+        //
+        Schema::create('rolefuzzy', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nama');
-            $table->string('kategori');
-            $table->integer('kpi');
-            $table->integer('softskill');
-            $table->integer('hardskill');
+            $table->string('kpi');
+            $table->string('softskill');
+            $table->string('hardskill');
+            $table->string('prestasi');
+            $table->string('predikat');
             $table->rememberToken();
             $table->timestamps();
         });
@@ -32,6 +33,6 @@ class CreateKaryawanTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('karyawan');
+        //
     }
 }

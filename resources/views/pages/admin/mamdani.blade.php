@@ -52,6 +52,14 @@
                                             <small class="mb-1 text-muted">- Jelek <b>< 50</b></small>
                                         </div>
                                     </div>
+                                    <div class="d-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
+                                        <h5 class="mr-2 mb-0">Prestasi</h5><br>
+                                        <i class="mdi mdi-numeric-4-box-multiple-outline mr-3 icon-lg text-primary"></i>
+                                        <div class="d-flex flex-column justify-content-around">
+                                            <small class="mb-1 text-muted">- Tinggi <b> A < x < B</b></small>
+                                            <small class="mb-1 text-muted">- Rendah <b> B < x < C</b></small>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>              
                         </div>
@@ -80,91 +88,23 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Aturan Himpunan Fuzzy</th>
+                                        <th>α-predikat</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                @if(count($list) > 0)
+                                @foreach($list as $list)
                                     <tr>
-                                        <td>1</td>
-                                        <td>IF KPI TINGGI AND SOFTSKILL BAIK AND HARDSKILL BAGUS THEN PRESTASI</td>
+                                        <td>{{ $list->id }}</td>
+                                        <td>IF KPI {{ $list->kpi }} AND SOFTSKILL {{ $list->softskill }} AND HARDSKILL {{ $list->hardskill }} THEN {{ $list->prestasi }}</td>
+                                        <td>{{ $list->predikat }}</td>
                                     </tr>
-                                        <td>2</td>
-                                        <td>IF KPI TINGGI AND SOFTSKILL BAIK AND HARDSKILL LUMAYAN THEN PRESTASI</td>
+                                @endforeach
+                                @else
+                                    <tr>
+                                        <td>Tidak Ada Data</td>
                                     </tr>
-                                        <td>3</td>
-                                        <td>IF KPI TINGGI AND SOFTSKILL BAIK AND HARDSKILL JELEK THEN PRESTASI</td>
-                                    </tr>
-                                        <td>4</td>
-                                        <td>IF KPI TINGGI AND SOFTSKILL CUKUP AND HARDSKILL BAGUS THEN PRESTASI</td>
-                                    </tr>
-                                        <td>5</td>
-                                        <td>IF KPI TINGGI AND SOFTSKILL CUKUP AND HARDSKILL LUMAYAN THEN PRESTASI</td>
-                                    </tr>
-                                        <td>6</td>
-                                        <td>IF KPI TINGGI AND SOFTSKILL CUKUP AND HARDSKILL JELEK THEN PRESTASI</td>
-                                    </tr>
-                                        <td>7</td>
-                                        <td>IF KPI TINGGI AND SOFTSKILL BURUK AND HARDSKILL BAGUS THEN PRESTASI</td>
-                                    </tr>
-                                        <td>8</td>
-                                        <td>IF KPI TINGGI AND SOFTSKILL BURUK AND HARDSKILL LUMAYAN THEN PRESTASI</td>
-                                    </tr>
-                                        <td>9</td>
-                                        <td>IF KPI TINGGI AND SOFTSKILL BURUK AND HARDSKILL JELEK THEN PRESTASI</td>
-                                    </tr>
-                                        <td>10</td>
-                                        <td>IF KPI SEDANG AND SOFTSKILL BAIK AND HARDSKILL BAGUS THEN PRESTASI</td>
-                                    </tr>
-                                        <td>11</td>
-                                        <td>IF KPI SEDANG AND SOFTSKILL BAIK AND HARDSKILL LUMAYAN THEN PRESTASI</td>
-                                    </tr>
-                                        <td>12</td>
-                                        <td>IF KPI SEDANG AND SOFTSKILL BAIK AND HARDSKILL JELEK THEN PRESTASI</td>
-                                    </tr>
-                                        <td>13</td>
-                                        <td>IF KPI SEDANG AND SOFTSKILL CUKUP AND HARDSKILL BAGUS THEN PRESTASI</td>
-                                    </tr>
-                                        <td>14</td>
-                                        <td>IF KPI SEDANG AND SOFTSKILL CUKUP AND HARDSKILL LUMAYAN THEN PRESTASI</td>
-                                    </tr>
-                                        <td>15</td>
-                                        <td>IF KPI SEDANG AND SOFTSKILL CUKUP AND HARDSKILL JELEK THEN PRESTASI</td>
-                                    </tr>
-                                        <td>16</td>
-                                        <td>IF KPI SEDANG AND SOFTSKILL BURUK AND HARDSKILL BAGUS THEN PRESTASI</td>
-                                    </tr>
-                                        <td>17</td>
-                                        <td>IF KPI SEDANG AND SOFTSKILL BURUK AND HARDSKILL LUMAYAN THEN PRESTASI</td>
-                                    </tr>
-                                        <td>18</td>
-                                        <td>IF KPI SEDANG AND SOFTSKILL BURUK AND HARDSKILL JELEK THEN PRESTASI</td>
-                                    </tr>
-                                        <td>19</td>
-                                        <td>IF KPI RENDAH AND SOFTSKILL BAIK AND HARDSKILL BAGUS THEN PRESTASI</td>
-                                    </tr>
-                                        <td>20</td>
-                                        <td>IF KPI RENDAH AND SOFTSKILL BAIK AND HARDSKILL LUMAYAN THEN PRESTASI</td>
-                                    </tr>
-                                        <td>21</td>
-                                        <td>IF KPI RENDAH AND SOFTSKILL BAIK AND HARDSKILL JELEK THEN PRESTASI</td>
-                                    </tr>
-                                        <td>22</td>
-                                        <td>IF KPI RENDAH AND SOFTSKILL CUKUP AND HARDSKILL BAGUS THEN PRESTASI</td>
-                                    </tr>
-                                        <td>23</td>
-                                        <td>IF KPI RENDAH AND SOFTSKILL CUKUP AND HARDSKILL LUMAYAN THEN PRESTASI</td>
-                                    </tr>
-                                        <td>24</td>
-                                        <td>IF KPI RENDAH AND SOFTSKILL CUKUP AND HARDSKILL JELEK THEN PRESTASI</td>
-                                    </tr>
-                                        <td>25</td>
-                                        <td>IF KPI RENDAH AND SOFTSKILL BURUK AND HARDSKILL BAGUS THEN PRESTASI</td>
-                                    </tr>
-                                        <td>26</td>
-                                        <td>IF KPI RENDAH AND SOFTSKILL BURUK AND HARDSKILL LUMAYAN THEN PRESTASI</td>
-                                    </tr>
-                                        <td>27</td>
-                                        <td>IF KPI RENDAH AND SOFTSKILL BURUK AND HARDSKILL JELEK THEN PRESTASI</td>
-                                    </tr>
+                                @endif
                                 </tbody>
                             </table>
                         </div>
