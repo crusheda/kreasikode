@@ -17,29 +17,15 @@ class MamdaniController extends Controller
         $predikats = [];
         foreach ($data as $key => $value) {
             # code...
-            $kpirendah = $this->hitungKpiRendah($value->kpi);
-            $kpisedang = $this->hitungKpiSedang($value->kpi);
-            $kpitinggi = $this->hitungKpiTinggi($value->kpi);
-
-            $ssjelek = $this->hitungSSJelek($value->softskill);
-            $sslumayan = $this->hitungSSLumayan($value->softskill);
-            $ssbagus = $this->hitungSSBagus($value->softskill);
-
-            $hsburuk = $this->hitungHSBuruk($value->hardskill);
-            $hscukup = $this->hitungHSCukup($value->hardskill);
-            $hsbaik = $this->hitungHSBaik($value->hardskill);
+            $hasilkpi = $this->hitungKpi($value->kpi);
+            $hasilss = $this->hitungSoftSkill($value->softskill);
+            $hasilhs = $this->hitungHardSkill($value->hardskill);
 
             array_push($predikats, [
                 'nama' => $value->nama,
-                'kpirendah' => $kpirendah,
-                'kpisedang' => $kpisedang,
-                'kpitinggi' => $kpitinggi,
-                'ssjelek' => $ssjelek,
-                'sslumayan' => $sslumayan,
-                'ssbagus' => $ssbagus,
-                'hsburuk' => $hsburuk,
-                'hscukup' => $hscukup,
-                'hsbaik' => $hsbaik
+                'hasilkpi' => $hasilkpi,
+                'hasilss' => $hasilss,
+                'hasilhs' => $hasilhs
             ]);
         }
         
@@ -77,10 +63,9 @@ class MamdaniController extends Controller
     return view('pages.admin.output')->with('list',$predikats);
     }
 
-    public function hitungKpiRendah($x)
+    public function hitungKpi($x)
     {
         # code...
-        // Himpunan Fuzzy
         //rendah
         if ($x <= 50) {
             # code...
@@ -95,11 +80,6 @@ class MamdaniController extends Controller
             $kpirendah = 0;
 
         }
-        return $kpirendah;
-    }
-
-    public function hitungKpiSedang($x)
-    {
         //sedang
         if ($x <= 50 || $x >= 130) {
             # code...
@@ -114,11 +94,6 @@ class MamdaniController extends Controller
             $kpisedang = (130-$x)/(130-80);
 
         }
-        return $kpisedang;
-    }
-
-    public function hitungKpiTinggi($x)
-    {
         //tinggi
         if ($x <= 80) {
             # code...
@@ -133,13 +108,18 @@ class MamdaniController extends Controller
             $kpitinggi = 1;
 
         }
-        return $kpitinggi;
+
+        $data = [
+            'kpirendah' => $kpirendah,
+            'kpisedang' => $kpisedang,
+            'kpitinggi' => $kpitinggi
+            ];
+        return $data;
     }
-    
-    public function hitungSSJelek($y)
+
+    public function hitungSoftSkill($y)
     {
         # code...
-        // Himpunan Fuzzy
         //rendah
         if ($y <= 40) {
             # code...
@@ -154,11 +134,6 @@ class MamdaniController extends Controller
             $ssjelek = 0;
 
         }
-        return $ssjelek;
-    }
-
-    public function hitungSSLumayan($y)
-    {
         //sedang
         if ($y <= 40 || $y >= 90) {
             # code...
@@ -173,11 +148,6 @@ class MamdaniController extends Controller
             $sslumayan = (90-$y)/(90-75);
 
         }
-        return $sslumayan;
-    }
-
-    public function hitungSSBagus($y)
-    {
         //tinggi
         if ($y <= 75) {
             # code...
@@ -192,13 +162,17 @@ class MamdaniController extends Controller
             $ssbagus = 1;
 
         }
-        return $ssbagus;
+        $data = [
+            'ssjelek' => $ssjelek,
+            'sslumayan' => $sslumayan,
+            'ssbagus' => $ssbagus
+            ];
+        return $data;
     }
-
-    public function hitungHSBuruk($z)
+    
+    public function hitungHardSkill($z)
     {
         # code...
-        // Himpunan Fuzzy
         //rendah
         if ($z <= 60) {
             # code...
@@ -213,11 +187,6 @@ class MamdaniController extends Controller
             $hsburuk = 0;
 
         }
-        return $hsburuk;
-    }
-
-    public function hitungHSCukup($z)
-    {
         //sedang
         if ($z <= 60 || $z >= 180) {
             # code...
@@ -232,11 +201,6 @@ class MamdaniController extends Controller
             $hscukup = (1180-$z)/(180-100);
 
         }
-        return $hscukup;
-    }
-
-    public function hitungHSBaik($z)
-    {
         //tinggi
         if ($z <= 100) {
             # code...
@@ -251,7 +215,12 @@ class MamdaniController extends Controller
             $hsbaik = 1;
 
         }
-        return $hsbaik;
+        $data = [
+            'hsburuk' => $hsburuk,
+            'hscukup' => $hscukup,
+            'hsbaik' => $hsbaik
+            ];
+        return $data;
     }
 
     public function toHitung()
