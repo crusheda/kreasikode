@@ -12,55 +12,29 @@ class MamdaniController extends Controller
     public function index()
     {
         # code...
-        $data = karyawan::all();
-        
-        $predikats = [];
-        foreach ($data as $key => $value) {
+        $datakaryawan = karyawan::all();
+        $datarole = rolefuzzy::all();
+
+        $showdata = [];
+        $predikat =[];
+        // foreach ($datarole as $key => $value) {
+        foreach ($datakaryawan as $key => $value) {
             # code...
             $hasilkpi = $this->hitungKpi($value->kpi);
             $hasilss = $this->hitungSoftSkill($value->softskill);
             $hasilhs = $this->hitungHardSkill($value->hardskill);
 
-            array_push($predikats, [
+            $predikat = $this->hitungpred($hasilkpi,$hasilss,$hasilhs);
+            array_push($showdata, [
                 'nama' => $value->nama,
                 'hasilkpi' => $hasilkpi,
                 'hasilss' => $hasilss,
-                'hasilhs' => $hasilhs
+                'hasilhs' => $hasilhs,
+                'NilaiPredikat' => $predikat
             ]);
         }
-        
-        print_r($predikats[0]);
-        ?> <br> <br> <?php
-        print_r($predikats[1]);
-        ?> <br> <br> <?php
-        print_r($predikats[2]);
-        die();
-
-        //     $hasilkpi = $this->hitungKpi($value->kpi);
-        //     $hasilss = $this->hitungSoftskill($value->softskill);
-        //     $hasilhs = $this->hitungHardskill($value->hardskill);
-        //     $predikat = min($hasilkpi,$hasilss,$hasilhs);
-        //     $hasilakhir = $this->deFuzzy($predikat);
-        //     array_push($predikats, [
-        //         'id' => $value->id,
-        //         'nama' => $value->nama,
-        //         'predikat' => $predikat,
-        //         'hasilakhir' => $hasilakhir
-        //     ]);
-        // }
-
-        // print_r($predikats[0]);
-        // die();
-
-            // $save = rolefuzzy::find($id);
-            // $data->predikat = $predikat;
-            // $data->save();
-        // Array $data to HTML
-        // $data = [
-        //     'show' => $data,
-        // ];
-    // return view('pages.admin.output')->with('list',$predikats);
-    return view('pages.admin.output')->with('list',$predikats);
+        print_r($showdata);
+        // return view('pages.admin.output')->with('list',$showdata);
     }
 
     public function hitungKpi($x)
@@ -125,39 +99,39 @@ class MamdaniController extends Controller
             # code...
             $ssjelek = 1;
         
-        } elseif ($y >= 40 && $y <= 75) {
+        } elseif ($y >= 40 && $y <= 80) {
             # code...
-            $ssjelek = (75-$y)/(75-40);
+            $ssjelek = (80-$y)/(80-40);
 
-        } elseif ($y >= 75) {
+        } elseif ($y >= 80) {
             # code...
             $ssjelek = 0;
 
         }
         //sedang
-        if ($y <= 40 || $y >= 90) {
+        if ($y <= 40 || $y >= 120) {
             # code...
             $sslumayan = 0;
 
-        } elseif ($y >= 40 && $y <= 75) {
+        } elseif ($y >= 40 && $y <= 80) {
             # code...
-            $sslumayan = ($y-40)/(75-40);
+            $sslumayan = ($y-40)/(80-40);
             
-        } elseif ($y >=75 && $y <= 90) {
+        } elseif ($y >=80 && $y <= 120) {
             # code...
-            $sslumayan = (90-$y)/(90-75);
+            $sslumayan = (120-$y)/(120-80);
 
         }
         //tinggi
-        if ($y <= 75) {
+        if ($y <= 80) {
             # code...
             $ssbagus = 0;
         
-        } elseif ($y >= 75 && $y <= 90) {
+        } elseif ($y >= 80 && $y <= 120) {
             # code...
-            $ssbagus = ($y-75)/(90-75);
+            $ssbagus = ($y-80)/(120-80);
 
-        } elseif ($y >= 90) {
+        } elseif ($y >= 120) {
             # code...
             $ssbagus = 1;
 
@@ -219,6 +193,37 @@ class MamdaniController extends Controller
             'hsburuk' => $hsburuk,
             'hscukup' => $hscukup,
             'hsbaik' => $hsbaik
+            ];
+        return $data;
+    }
+
+    public function hitungpred($hasilkpi,$hasilss,$hasilhs)
+    {
+        # code...
+        //KPI
+        $hasilkpirendah = $hasilkpi['kpirendah'];
+        $hasilkpisedang = $hasilkpi['kpisedang'];
+        $hasilkpitinggi = $hasilkpi['kpitinggi'];
+
+        //SS
+        $hasilssjelek = $hasilss['ssjelek'];
+        $hasilsslumayan = $hasilss['sslumayan'];
+        $hasilssbagus = $hasilss['ssbagus'];
+
+        // //HS
+        $hasilhsburuk = $hasilhs['hsburuk'];
+        $hasilhscukup = $hasilhs['hscukup'];
+        $hasilhsbaik = $hasilhs['hsbaik'];
+        
+        //Aplikasi Fungsi Implikasi
+        $role1 = min($hasilkpitinggi,$hasilssbagus,$hasilhsbaik);
+        $role2 = min($hasilkpitinggi,$hasilssbagus,$hasilhscukup);
+        $role3 = min($hasilkpitinggi,$hasilssbagus,$hasilhsburuk);
+
+        $data = [
+            'role1' => $role1,
+            'role2' => $role2,
+            'role3' => $role3
             ];
         return $data;
     }
