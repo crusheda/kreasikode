@@ -17,6 +17,8 @@
   <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
   <!-- endinject -->
   <link rel="shortcut icon" href="{{ URL::asset('images/logo/kreasi-kode-mini.png') }}" />
+  {{-- <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css"/> --}}
+ 
 </head>
 <body class="sidebar-icon-only">    
     <div class="container-scroller">
@@ -51,6 +53,7 @@
     <script src="{{ URL::asset('js/jquery.dataTables.js') }}"></script>
     <script src="{{ URL::asset('js/dataTables.bootstrap4.js') }}"></script>
     <!-- End custom js for this page-->
+    {{-- <script type="text/javascript" src="DataTables/datatables.min.js"></script> --}}
 </body>
 
 </html>
