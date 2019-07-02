@@ -16,11 +16,10 @@ class RoleFuzzyTable extends Migration
         //
         Schema::create('rolefuzzy', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('kpi');
-            $table->string('softskill');
-            $table->string('hardskill');
+            $table->string('disiplin');
+            $table->string('tanggungjawab');
+            $table->string('planningskill');
             $table->string('prestasi');
-            $table->string('predikat');
             $table->rememberToken();
             $table->timestamps();
         });

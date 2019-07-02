@@ -36,22 +36,22 @@
                                     <div class="d-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
                                         <i class="mdi mdi-checkbox-multiple-marked-outline mr-3 icon-lg text-danger"></i>
                                         <div class="d-flex flex-column justify-content-around">
-                                            <small class="mb-1 text-muted">Total KPI</small>
-                                            <h5 class="mr-2 mb-0">{{ $list['jmlkpi'] }}</h5>
+                                            <small class="mb-1 text-muted">Total Disiplin</small>
+                                            <h5 class="mr-2 mb-0">{{ $list['jmldsp'] }}</h5>
                                         </div>
                                     </div>
                                     <div class="d-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
                                         <i class="mdi mdi-checkbox-multiple-marked-outline mr-3 icon-lg text-danger"></i>
                                         <div class="d-flex flex-column justify-content-around">
-                                            <small class="mb-1 text-muted">Total Soft Skill</small>
-                                            <h5 class="mr-2 mb-0">{{ $list['jmlsoftskill'] }}</h5>
+                                            <small class="mb-1 text-muted">Total Tanggungjawab</small>
+                                            <h5 class="mr-2 mb-0">{{ $list['jmltjb'] }}</h5>
                                         </div>
                                     </div>
                                     <div class="d-flex py-3 border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
                                         <i class="mdi mdi-checkbox-multiple-marked-outline mr-3 icon-lg text-danger"></i>
                                         <div class="d-flex flex-column justify-content-around">
-                                            <small class="mb-1 text-muted">Total Hard Skill</small>
-                                            <h5 class="mr-2 mb-0">{{ $list['jmlhardskill'] }}</h5>
+                                            <small class="mb-1 text-muted">Total Planningskill</small>
+                                            <h5 class="mr-2 mb-0">{{ $list['jmlpns'] }}</h5>
                                         </div>
                                     </div>
                                 </div>
@@ -72,15 +72,15 @@
                                     {{ session()->get('message') }}
                                 </div>
                             @endif
-                            <table id="recent-purchases-listing" class="table">
+                            <table id="tabelkaryawan" class="table">
                                 <thead>
                                 <tr>
                                     <th>ID</th>
                                     <th>Nama</th>
                                     <th>Kategori</th>
-                                    <th>KPI</th>
-                                    <th>Soft Skill</th>
-                                    <th>Hard Skill</th>
+                                    <th>Disiplin</th>
+                                    <th>Tanggungjawab</th>
+                                    <th>Planningskill</th>
                                     <th>Aksi</th>
                                 </tr>
                                 </thead>
@@ -91,9 +91,9 @@
                                             <td>{{ $list->id }}</td>
                                             <td>{{ $list->nama }}</td>
                                             <td>{{ $list->kategori }}</td>
-                                            <td>{{ $list->kpi }}</td>
-                                            <td>{{ $list->softskill }}</td>
-                                            <td>{{ $list->hardskill }}</td>
+                                            <td>{{ $list->disiplin }}</td>
+                                            <td>{{ $list->tanggungjawab }}</td>
+                                            <td>{{ $list->planningskill }}</td>
                                             <td>
                                                 <center>
                                                     <button class="btn btn-warning" onclick="window.location.
@@ -113,7 +113,7 @@
                                         @endforeach
                                     @else
                                         <tr>
-                                            <td colspan=3>Tidak Ada Data</td>
+                                            <td colspan=3>Tidak Ada Karyawan</td>
                                         </tr>
                                     @endif
                                 </tbody>
@@ -126,4 +126,13 @@
     </div>
 </div>
 <!-- main-panel ends -->
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#tabelkaryawan').dataTable( {
+            paging: true,
+            searching: true
+        } );
+    } );
+</script>
 @endsection

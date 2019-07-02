@@ -18,9 +18,9 @@ Route::get('/', function () {
     return view('pages.user.index');
 })->name('home');
 
-// Route::get('/admin', function () {
-//     return view('pages.admin.index');
-// // });
+Route::get('/demos', function () {
+    return view('index');
+});
 // Route::get('/login/admin', function () {
 //     return view('pages.admin.login');
 // });
@@ -28,8 +28,10 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/admin/login','LoginController@index')->name('admin.login');
 Route::get('/admin', 'HomeController@index')->name('admin');
-Route::get('/mamdani/hitung','MamdaniController@index')->name('output');
+Route::get('/admin/grafik', 'HomeController@grafik')->name('admin');
+Route::get('/mamdani/hitung','MamdaniController@index')->name('grafik');
 // Route::post('/mamdani/hitung', 'MamdaniController@index')->name('output');
-// Route::get('/admin/karyawan', 'KaryawanController@index')->name('karyawan');
+Route::get('/mamdani/hitung/simpan', 'MamdaniController@simpanOutput')->name('simpanOutput');
 Route::resource('karyawan', 'KaryawanController');
 Route::get('/mamdani','MamdaniController@toHitung')->name('toHitung');
+Route::get('/history','HistoryController@index')->name('admin.history');

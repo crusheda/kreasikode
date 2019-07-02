@@ -17,11 +17,12 @@ class CreateKaryawanTable extends Migration
             $table->increments('id');
             $table->string('nama');
             $table->string('kategori');
-            $table->integer('kpi');
-            $table->integer('softskill');
-            $table->integer('hardskill');
+            $table->integer('disiplin');
+            $table->integer('tanggungjawab');
+            $table->integer('planningskill');
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

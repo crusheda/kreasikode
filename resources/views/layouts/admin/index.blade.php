@@ -15,6 +15,7 @@
   <!-- End plugin css for this page -->
   <!-- inject:css -->
   <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
+  <link rel="stylesheet" href="{{ URL::asset('css/Chart.css') }}">
   <!-- endinject -->
   <link rel="shortcut icon" href="{{ URL::asset('images/logo/kreasi-kode-mini.png') }}" />
   {{-- <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css"/> --}}
@@ -38,7 +39,7 @@
     <script src="{{ URL::asset('vendors/base/vendor.bundle.base.js') }}"></script>
     <!-- endinject -->
     <!-- Plugin js for this page-->
-    <script src="{{ URL::asset('vendors/chart.js/Chart.min.js') }}"></script>
+    
     <script src="{{ URL::asset('vendors/datatables.net/jquery.dataTables.js') }}"></script>
     <script src="{{ URL::asset('vendors/datatables.net-bs4/dataTables.bootstrap4.js') }}"></script>
     <!-- End plugin js for this page-->

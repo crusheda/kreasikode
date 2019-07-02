@@ -17,19 +17,17 @@ class KaryawanController extends Controller
         //
         $show = karyawan::all();
         $total = karyawan::count();
-        $jmlkpi = karyawan::all()->sum('kpi');
-        $jmlsoftskill = karyawan::all()->sum('softskill');
-        $jmlhardskill = karyawan::all()->sum('hardskill');
-        // $data = karyawan::orderBy('id', 'ASC')->get();
+        $jmldsp = karyawan::all()->sum('disiplin');
+        $jmltjb = karyawan::all()->sum('tanggungjawab');
+        $jmlpns = karyawan::all()->sum('planningskill');
 
         $data = [
             'count' => $total,
             'show' => $show,
-            'jmlkpi' => $jmlkpi,
-            'jmlsoftskill' => $jmlsoftskill,
-            'jmlhardskill' => $jmlhardskill,
+            'jmldsp' => $jmldsp,
+            'jmltjb' => $jmltjb,
+            'jmlpns' => $jmlpns,
         ];
-
         return view('pages.admin.karyawan')->with('list', $data);
     }
 
@@ -56,16 +54,16 @@ class KaryawanController extends Controller
         $this->validate($request,[
             'nama' => 'required',
             'kategori' => 'required',
-            'kpi' => 'required',
-            'softskill' => 'required',
-            'hardskill' => 'required',
+            'disiplin' => 'required',
+            'tanggungjawab' => 'required',
+            'planningskill' => 'required',
             ]);
         $data = new karyawan;
         $data->nama = $request->nama;
         $data->kategori = $request->kategori;
-        $data->kpi = $request->kpi;
-        $data->softskill = $request->softskill;
-        $data->hardskill = $request->hardskill;
+        $data->disiplin = $request->disiplin;
+        $data->tanggungjawab = $request->tanggungjawab;
+        $data->planningskill = $request->planningskill;
 
         $data->save();
         return redirect('/karyawan')->with('message','Tambah Data Berhasil');
@@ -108,16 +106,16 @@ class KaryawanController extends Controller
         $this->validate($request,[
             'nama' => 'required',
             'kategori' => 'required',
-            'kpi' => 'required',
-            'softskill' => 'required',
-            'hardskill' => 'required',
+            'disiplin' => 'required',
+            'tanggungjawab' => 'required',
+            'planningskill' => 'required',
             ]);
         $data = karyawan::find($id);
         $data->nama = $request->nama;
         $data->kategori = $request->kategori;
-        $data->kpi = $request->kpi;
-        $data->softskill = $request->softskill;
-        $data->hardskill = $request->hardskill;
+        $data->disiplin = $request->disiplin;
+        $data->tanggungjawab = $request->tanggungjawab;
+        $data->planningskill = $request->planningskill;
         $data->save();
 
         return redirect('/karyawan')->with('message','Perubahan Data Berhasil');

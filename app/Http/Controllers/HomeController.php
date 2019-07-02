@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\prestasi;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,6 +25,16 @@ class HomeController extends Controller
     public function index()
     {
         return view('pages.admin.index');
+    }
+
+    public function grafik()
+    {
+        # code...
+        $data = prestasi::orderBy('created_at', 'DESC')->limit(2)->get();
+
+        return response()->json([
+            'data' => $data
+        ]);
     }
 
     public function showLogin()

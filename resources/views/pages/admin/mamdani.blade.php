@@ -6,11 +6,11 @@
     <div class="content-wrapper">
         <div class="row">
             <div class="col-md-12 grid-margin">
-                <div class="d-flex justify-content-between flex-wrap">
-                    <div class="d-flex align-items-end flex-wrap">
-                            <a class="text-muted mb-0 hover-cursor">Penghitungan Menggunakan Metode Mamdani</a>
+                @if(session()->has('message'))
+                    <div class="alert alert-success">
+                        {{ session()->get('message') }}
                     </div>
-                </div>
+                @endif
             </div>
         </div>
         <div class="row">
@@ -26,38 +26,38 @@
                             <div class="tab-pane fade show active" id="" role="tabpanel">
                                 <div class="d-flex flex-wrap justify-content-xl-between">
                                     <div class="d-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
-                                        <h5 class="mr-2 mb-0">KPI</h5><br>
+                                        <h5 class="mr-2 mb-0">Disiplin</h5><br>
                                         <i class="mdi mdi-numeric-1-box-outline mr-3 icon-lg text-primary"></i>
                                         <div class="d-flex flex-column justify-content-around">
-                                            <small class="mb-1 text-muted">- Tinggi <b>> 150</b></small>
-                                            <small class="mb-1 text-muted">- Sedang <b>150 < x < 75</b></small>
-                                            <small class="mb-1 text-muted">- Rendah <b>< 75</b></small>
+                                            <small class="mb-1 text-muted">- Buruk <b>> 130</b></small>
+                                            <small class="mb-1 text-muted">- Cukup <b>130 < x < 80</b></small>
+                                            <small class="mb-1 text-muted">- Baik <b>< 50</b></small>
                                         </div>
                                     </div>
                                     <div class="d-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
-                                        <h5 class="mr-2 mb-0">Soft Skill</h5><br>
+                                        <h5 class="mr-2 mb-0">Tanggungjawab</h5><br>
                                         <i class="mdi mdi-numeric-2-box-outline mr-3 icon-lg text-primary"></i>
                                         <div class="d-flex flex-column justify-content-around">
-                                            <small class="mb-1 text-muted">- Baik <b>> 100</b></small>
-                                            <small class="mb-1 text-muted">- Cukup <b>100 < x < 50</b></small>
-                                            <small class="mb-1 text-muted">- Buruk <b>< 50</b></small>
+                                            <small class="mb-1 text-muted">- Jelek <b>> 120</b></small>
+                                            <small class="mb-1 text-muted">- Lumayan <b>120 < x < 80</b></small>
+                                            <small class="mb-1 text-muted">- Bagus <b>< 40</b></small>
                                         </div>
                                     </div>
                                     <div class="d-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
-                                        <h5 class="mr-2 mb-0">Hard Skill</h5><br>
+                                        <h5 class="mr-2 mb-0">Planning Skill</h5><br>
                                         <i class="mdi mdi-numeric-3-box-outline mr-3 icon-lg text-primary"></i>
                                         <div class="d-flex flex-column justify-content-around">
-                                            <small class="mb-1 text-muted">- Bagus <b>> 100</b></small>
-                                            <small class="mb-1 text-muted">- Lumayan <b>100 < x < 50</b></small>
-                                            <small class="mb-1 text-muted">- Jelek <b>< 50</b></small>
+                                            <small class="mb-1 text-muted">- Buruk <b>> 150</b></small>
+                                            <small class="mb-1 text-muted">- Cukup <b>150 < x < 100</b></small>
+                                            <small class="mb-1 text-muted">- Baik <b>< 60</b></small>
                                         </div>
                                     </div>
                                     <div class="d-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
                                         <h5 class="mr-2 mb-0">Prestasi</h5><br>
                                         <i class="mdi mdi-numeric-4-box-multiple-outline mr-3 icon-lg text-primary"></i>
                                         <div class="d-flex flex-column justify-content-around">
-                                            <small class="mb-1 text-muted">- Tinggi <b> A < x < B</b></small>
-                                            <small class="mb-1 text-muted">- Rendah <b> B < x < C</b></small>
+                                            <small class="mb-1 text-muted">- Buruk <b> A < x < B</b></small>
+                                            <small class="mb-1 text-muted">- Baik <b> B < x < C</b></small>
                                         </div>
                                     </div>
                                 </div>
@@ -82,13 +82,13 @@
                 <div class="card">
                     <div class="card-body">
                         <p class="card-title">Aturan Fuzzy</p>
-                        <div class="table-responsive"  style="height:500px;overflow-y: auto;width: 100%;display:block">
-                            <table id="recent-purchases-listing" class="table">
+                        <div class="table-responsive">
+                            <table id="tabelrole" class="table">
                                 <thead>
                                     <tr>
                                         <th>No</th>
                                         <th>Aturan Himpunan Fuzzy</th>
-                                        <th>α-predikat</th>
+                                        {{-- <th>α-predikat</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -96,8 +96,8 @@
                                 @foreach($list as $list)
                                     <tr>
                                         <td>{{ $list->id }}</td>
-                                        <td>IF KPI {{ $list->kpi }} AND SOFTSKILL {{ $list->softskill }} AND HARDSKILL {{ $list->hardskill }} THEN {{ $list->prestasi }}</td>
-                                        <td>{{ $list->predikat }}</td>
+                                        <td>IF DISIPLIN {{ $list->disiplin }} AND TANGGUNGJAWAB {{ $list->tanggungjawab }} AND PLANNINGSKILL {{ $list->planningskill }} THEN {{ $list->prestasi }}</td>
+                                        {{-- <td>{{ $list->predikat }}</td> --}}
                                     </tr>
                                 @endforeach
                                 @else
@@ -111,25 +111,17 @@
                     </div>
                 </div>
             </div>
-        </div><br>
-        <div class="row">
-            <div class="col-md-12 stretch-card">
-                <div class="card">
-                    <div class="card-body">
-                        <p class="card-title">Proses Penghitungan Metode Mamdani</p>
-                        <div class="table-responsive">
-                            @if(session()->has('message'))
-                                <div class="alert alert-success">
-                                    {{ session()->get('message') }}
-                                </div>
-                            @endif
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat consequuntur, qui libero voluptatibus quae illum exercitationem aperiam. Autem cumque tempore quia, quidem officiis deserunt corrupti dolore pariatur nobis ab id!</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>
-<!-- main-panel ends -->
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#tabelrole').dataTable( {
+            paging: true,
+            searching: true
+        } );
+    } );
+</script>
 @endsection

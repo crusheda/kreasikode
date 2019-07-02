@@ -15,15 +15,15 @@
                                     <tr align="center">
                                         <th rowspan="2">No</th>
                                         <th rowspan="2">Nama Karyawan</th>
-                                        <th colspan="3">KPI</th>
-                                        <th colspan="3">Soft Skill</th>
-                                        <th colspan="3">Hard Skill</th>
+                                        <th colspan="3">Disiplin</th>
+                                        <th colspan="3">Tanggungjawab</th>
+                                        <th colspan="3">Planingskill</th>
                                         <th rowspan="2">Predikat</th>
                                     </tr>
                                     <tr>
-                                        <th>Rendah</th>
-                                        <th>Sedang</th>
-                                        <th>Tinggi</th>
+                                        <th>Buruk</th>
+                                        <th>Cukup</th>
+                                        <th>Baik</th>
                                         <th>Jelek</th>
                                         <th>Lumayan</th>
                                         <th>Bagus</th>
@@ -33,18 +33,18 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @if(count($list) > 0)
-                                @foreach($list as $item)
+                                @if(count($data['list']) > 0)
+                                @foreach($data['list'] as $item)
                                     <tr>
                                         <td>{{ $item['id'] }}</td>
                                         <td>{{ $item['nama'] }}</td>
-                                        @foreach($item['hasilkpi'] as $items)
+                                        @foreach($item['hasildsp'] as $items)
                                             <td>{{ $items }}</td>
                                         @endforeach
-                                        @foreach($item['hasilss'] as $items)
+                                        @foreach($item['hasiltjb'] as $items)
                                             <td>{{ $items }}</td>
                                         @endforeach
-                                        @foreach($item['hasilhs'] as $items)
+                                        @foreach($item['hasilpns'] as $items)
                                             <td>{{ $items }}</td>
                                         @endforeach
                                         <td>
@@ -66,13 +66,28 @@
                 </div>
             </div>
         </div><br>
+        @if ($data['active_button'])
+        <div class="row">
+            <div class="col-md-12 grid-margin">
+                <div class="d-flex justify-content-between align-items-end flex-wrap">
+                    <button style="position:relative" class="btn btn-primary mt-2 mt-xl-0 btn-lg" onclick="window.location.
+                        href='{{ url('/mamdani/hitung/simpan') }}'">
+                        <i class="mdi mdi-chart-areaspline mr-3 icon-sm"></i>Simpan
+                    </button>
+                </div>
+            </div>
+        </div>
+        @endif
         <div class="row">
             <div class="col-md-12 stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <p class="card-title">Tahapan Penghitungan Metode Mamdani</p>
+                        <p class="card-title" align="center">Karyawan Berprestasi Saat Ini</p>
                         <div class="table-responsive">
-                            <p>Disini dilampirkan cara penghitungan dengan menggunakan metode mamdani hingga hasil akhir.</p>
+                            <p align="center">Dari hasil perhitungan dengan menggunakan Metode Mamdani, dihasilkan output Karyawan Berprestasi yaitu :</p>
+                            {{-- @foreach ($data['hasil'] as $item) --}}
+                            {{-- <b><h2 align="center">{{ $data['hasil']['nama'] }}</h2></b> --}}
+                            {{-- @endforeach --}}
                         </div>
                     </div>
                 </div>
@@ -80,7 +95,8 @@
         </div>
     </div>
 </div>
-@foreach ($list as $item)
+
+@foreach ($data['list'] as $item)
 <div class="modal fade bd-example-modal-sm" id="predikat{{ $item['id'] }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
     <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
@@ -117,12 +133,22 @@
                     </tbody>
                 </table>
                 <hr>
-                <h5 class="modal-title" id="exampleModalLongTitle">Komposisi Aturan :</h5>
+                <h5 class="modal-title">Nilai Max Untuk Komposisi Aturan :</h5>
                 <p>Max Buruk : <b>{{ $item['predikat']['maxburuk'] }}</b></p>
-                <p>Max Buruk : <b>{{ $item['predikat']['maxbaik'] }}</b></p>
-                <h5 class="modal-title" id="exampleModalLongTitle">Nilai Keanggotaan :</h5>
+                <p>Max Baik : <b>{{ $item['predikat']['maxbaik'] }}</b></p>
+                <h5 class="modal-title">Penentuan Komposisi Aturan :</h5>
+                <p>Z1 : <b>{{ $item['predikat']['z1'] }}</b></p>
+                <p>Z2 : <b>{{ $item['predikat']['z2'] }}</b></p>
+                <h5 class="modal-title">Penentuan Momen Untuk Setiap Daerah :</h5>
+                <p>M1 : <b>{{ $item['predikat']['m1'] }}</b></p>
+                <p>M2 : <b>{{ $item['predikat']['m2'] }}</b></p>
+                <p>M3 : <b>{{ $item['predikat']['m3'] }}</b></p>
+                <h5 class="modal-title">Penentuan Area Untuk Setiap Daerah :</h5>
                 <p>A1 : <b>{{ $item['predikat']['a1'] }}</b></p>
                 <p>A2 : <b>{{ $item['predikat']['a2'] }}</b></p>
+                <p>A3 : <b>{{ $item['predikat']['a3'] }}</b></p>
+                <h5 class="modal-title">Penentuan Titik Pusat Dari Daerah Fuzzy :</h5>
+                <p>Z : <b>{{ $item['predikat']['z'] }}</b></p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -131,7 +157,7 @@
     </div>
 </div>
 @endforeach
-<!-- main-panel ends -->
+
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script>
     $(document).ready(function() {

@@ -35,30 +35,30 @@
                             </div>
                             <hr>
                             <div class="form-group">
-                                    <label>KPI</label>
+                                    <label>Disiplin</label>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text">1 - 100</span>
+                                        <span class="input-group-text">1 - 5</span>
                                     </div>
-                                    <input type="number" class="form-control" name="kpi" value="{{ $list->kpi }}" maxlength="3" max="100" min="1" data-min_max data-min="1" data-max="100" placeholder="{{ $list->kpi }}">
+                                    <input type="number" class="form-control" name="disiplin" value="{{ $list->disiplin }}" maxlength="1" max="5" min="1" data-min_max data-min="1" data-max="5" placeholder="{{ $list->disiplin }}">
                                 </div>
                             </div>
                             <div class="form-group">
-                                    <label>Soft Skill</label>
+                                    <label>Tanggungjawab</label>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text">1 - 100</span>
+                                        <span class="input-group-text">1 - 5</span>
                                     </div>
-                                    <input type="number" class="form-control" name="softskill" value="{{ $list->softskill }}" maxlength="3" max="100" min="1" data-min_max data-min="1" data-max="100" placeholder="{{ $list->softskill }}">
+                                    <input type="number" class="form-control" name="tanggungjawab" value="{{ $list->tanggungjawab }}" maxlength="1" max="5" min="1" data-min_max data-min="1" data-max="5" placeholder="{{ $list->tanggungjawab }}">
                                 </div>
                             </div>
                             <div class="form-group">
-                                    <label>Hard Skill</label>
+                                    <label>Planningskill</label>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text">1 - 100</span>
+                                        <span class="input-group-text">1 - 5</span>
                                     </div>
-                                    <input type="number" class="form-control" name="hardskill" value="{{ $list->hardskill }}" maxlength="3" max="100" min="1" data-min_max data-min="1" data-max="100" placeholder="{{ $list->hardskill }}">
+                                    <input type="number" class="form-control" name="planningskill" value="{{ $list->planningskill }}" maxlength="1" max="5" min="1" data-min_max data-min="1" data-max="5" placeholder="{{ $list->planningskill }}">
                                 </div>
                             </div>
                             <button class="btn btn-success">Submit</button>

@@ -33,31 +33,47 @@
                                 </select>
                             </div>
                             <hr>
+                            <h4 class="card-title text-center"></i>Penilaian Poin Karyawan</h4>
                             <div class="form-group">
-                                    <label>KPI</label>
+                                    <label>Disiplin</label>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text">1 - 100</span>
+                                        <span class="input-group-text text-dark">Poin : 1 - 5</span>
                                     </div>
-                                    <input type="number" class="form-control" name="kpi" maxlength="3" max="100" min="1" data-min_max data-min="1" data-max="100">
+                                    <input type="number" class="form-control" name="disiplin" maxlength="1" max="5" min="1" data-min_max data-min="1" data-max="5">
+                                    <div class="input-group-prepend">
+                                        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#modalinfodsp">
+                                            <a><i class="mdi mdi-information-outline text-dark"></i></a>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
-                                    <label>Soft Skill</label>
+                                    <label>Tanggungjawab</label>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text">1 - 100</span>
+                                        <span class="input-group-text text-dark">Poin : 1 - 5</span>
                                     </div>
-                                    <input type="number" class="form-control" name="softskill" maxlength="3" max="100" min="1" data-min_max data-min="1" data-max="100">
+                                    <input type="number" class="form-control" name="tanggungjawab" maxlength="1" max="5" min="1" data-min_max data-min="1" data-max="5">
+                                    <div class="input-group-prepend">
+                                        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#modalinfotjb">
+                                            <a><i class="mdi mdi-information-outline text-dark"></i></a>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
-                                    <label>Hard Skill</label>
+                                    <label>Planningskill</label>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text">1 - 100</span>
+                                        <span class="input-group-text text-dark">Poin : 1 - 5</span>
                                     </div>
-                                    <input type="number" class="form-control" name="hardskill" maxlength="3" max="100" min="1" data-min_max data-min="1" data-max="100">
+                                    <input type="number" class="form-control" name="planningskill" maxlength="1" max="5" min="1" data-min_max data-min="1" data-max="5">
+                                    <div class="input-group-prepend">
+                                        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#modalinfopns">
+                                            <a><i class="mdi mdi-information-outline text-dark"></i></a>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                             <button class="btn btn-success">Submit</button>
@@ -75,6 +91,76 @@
         </div>
     </div>
 </div>
+
+<!-- Modal Disiplin -->
+<div class="modal fade" id="modalinfodsp" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle"><i class="mdi mdi-plus-box"></i>Keterangan Poin 1 - 5</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    <b>1.</b>   Datang terlambat dan absen tanpa alasan yang jelas<br>
+                    <b>2.</b>   Datang kadang terlambat dan perkiraan absensi > 10%<br>
+                    <b>3.</b>   Selalu hadir tetapi kadang terlambat dan sesekali absen di beberapa kondisi yang bisa diberi toleransi<br>
+                    <b>4.</b>   Selalu hadir tepat waktu, dengan tingkat absensi < 5%<br>
+                    <b>5.</b>   Secara konsisten, selalu hadir tepat waktu, dengan tingkat absensi 0%<br>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Tanggungjawab -->
+<div class="modal fade" id="modalinfotjb" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle"><i class="mdi mdi-plus-box"></i>Keterangan Poin 1 - 5</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    <b>1.</b>   Sering kali tidak mengerjakan tugas yang diberikan<br>
+                    <b>2.</b>   Tugas yang diberikan dikerjakan namun kerap kali terlambat  dan banyak ditemui kesalahan<br>
+                    <b>3.</b>   Mengerjakan tugas yang diberikan terkadang terlambat  dan kurang sesuai dengan instruksi yang diberikan namun masih dalam batas yang wajar<br>
+                    <b>4.</b>   Selalu  mengerjakan  tugas  yang  diberikan  dengan  tepat   waktu meskipun sesekali melakukan kesalahan<br>
+                    <b>5.</b>   Selalu  mengerjakan  tugas  yang  diberikan,  mengumpulkan tepat waktu, serta mengerjakan sesuai dengan instruksi yang diberikan<br>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Planningskill -->
+<div class="modal fade" id="modalinfopns" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle"><i class="mdi mdi-plus-box"></i>Keterangan Poin 1 - 5</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    <b>1.</b>   Tidak pernah bekerja tanpa rencana sama sekali<br>
+                    <b>2.</b>   Sering membuat perencanaan dalam bekerja namun sering kali tidak mampu dieksekusi dengan baik<br>
+                    <b>3.</b>   Terkadang tidak mengeksekusi perencanaan kerja dengan baik<br>
+                    <b>4.</b>   Membuat perencanaan kerja dan mengeksekusinya dengan baik<br>
+                    <b>5.</b>   Selalu membuat perencanaan sebelum bekerja serta melakukan monitoring untuk memastikan rencana berjalan dengan baik<br>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
 <script>
 $(document).on('keyup', '[data-min_max]', function(e){
@@ -107,6 +193,7 @@ $(document).on('keydown', '[data-toggle=just_number]', function (e) {
              // let it happen, don't do anything
              return;
     }
+
     // Ensure that it is a number and stop the keypress
     if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
         e.preventDefault();

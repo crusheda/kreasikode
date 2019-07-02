@@ -19,9 +19,9 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="">
+            <a class="nav-link" href="{{ route('admin.history') }}">
                 <i class="mdi mdi-file-document-box-outline menu-icon"></i>
-                <span class="menu-title">Log</span>
+                <span class="menu-title">History</span>
             </a>
         </li>
     </ul>
