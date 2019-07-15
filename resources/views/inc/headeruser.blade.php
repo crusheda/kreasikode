@@ -13,9 +13,14 @@
         <div class="collapse navbar-collapse">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-            <a class="nav-link" href="javascript:void(0)" onclick="scrollToDownload()">
-                <i class="material-icons">supervisor_account</i>Output
+            <a class="nav-link" href="javascript:void(0)" onclick="scrollToHasil()">
+                <i class="material-icons">perm_identity</i>Output
             </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="javascript:void(0)" onclick="scrollToShow()">
+                    <i class="material-icons">settings</i>Penilaian
+                </a>
             </li>
             <li class="dropdown nav-item">
             @if (Route::has('login'))

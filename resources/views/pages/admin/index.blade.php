@@ -5,25 +5,28 @@
 <div class="main-panel">
   <div class="content-wrapper">
     <div class="row">
-      <div class="col-md-5 grid-margin stretch-card">
+      <div class="col-md-5">
         <div class="card">
           <div class="card-body">
-            <p class="card-title">Karyawan Berprestasi</p>
-            <h1>N U L L</h1>
-            <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-              Repellendus nemo dignissimos asperiores obcaecati delectus corrupti, similique 
-              voluptatibus aliquam itaque iure modi repellat, omnis illo aut natus distinctio atque fugiat reiciendis.</p>
-            <div id="total-sales-chart-legend"></div>                  
+            <p class="card-title"><i class="mdi mdi-account-outline"></i> Karyawan Berprestasi Bulan Ini</p>
+            @if(count($list['show']) > 0)
+            @foreach($list['show'] as $item)
+              </i><h1 class="text-primary"><i class="mdi mdi-account"></i>{{ $item->nama }}</h1>
+              <h5 class="text-secondary">Ditetapkan Menjadi Karyawan Berprestasi Pada :<br>{{ $item->created_at }}</h5><hr>
+              <h5 class="text-muted">Kategori Pekerjaan : {{ $item->kategori }}</h5>
+            @endforeach
+            @else
+            <u class="text-secondary"><h1 class="text-primary">Hasil Tidak Ditemukan</h1></u>
+            @endif                  
           </div>
-          <canvas id="total-sales-chart"></canvas>
+          {{-- <canvas id="total-sales-chart"></canvas> --}}
         </div>
       </div>
       <div class="col-md-7 grid-margin stretch-card">
         <div class="card">
           <div class="card-body">
-            <p class="card-title">Grafik Karyawan Berprestasi</p>
-            {{-- <canvas id="prestasi-karyawan"></canvas> --}}
-            <canvas id="myChart" width="400" height="400"></canvas>
+            <p class="card-title"><i class="mdi mdi-chart-line"></i> Grafik Karyawan Berprestasi</p>
+            <canvas id="myChart" width="44" height="25"></canvas>
           </div>
         </div>
       </div>
@@ -42,34 +45,6 @@
     } );
 </script>
 <script src="{{ URL::asset('js/Chart.js') }}"></script>
-{{-- <script>
-  var chartData = {
-    labels: ["Disiplin", "Tanggungjawab", "Planningskill", "Hasil Total"],
-    datasets: [
-      {label: '# of Votes', data: [589, 445, 483, 503] },
-      { data: [639, 465, 493, 478] }
-    ]
-  };
-  var chLine = document.getElementById("prestasi-karyawan");
-  if (chLine) {
-    new Chart(chLine, {
-    type: 'line',
-    data: chartData,
-    options: {
-      scales: {
-        yAxes: [{
-          ticks: {
-            beginAtZero: false
-          }
-        }]
-      },
-      legend: {
-        display: false
-      }
-    }
-    });
-  }
-</script> --}}
 <script>
 jQuery.ajax({
   url: '/admin/grafik',
@@ -99,7 +74,5 @@ jQuery.ajax({
           }
       });
 }});
-
-
 </script>
 @endsection

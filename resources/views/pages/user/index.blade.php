@@ -16,25 +16,33 @@
   </div>
 </div>
 <div class="main main-raised">
-  <div class="section section-download" id="downloadSection">
+  <div class="section section-hasil">
     <div class="container">
       <div class="row text-center">
         <div class="col-md-8 ml-auto mr-auto">
-          <h2>Karyawan Berprestasi</h2>
-          <h4>Penghitungan dengan menggunakan Metode Mamdani pada Logika Fuzzy menghasilkan output :</h4>
-          <div class="col-lg-4 col-md-6 ml-auto mr-auto">
+          <h2>Karyawan Berprestasi Bulan Ini</h2>
+          <h4>Penghitungan menggunakan Metode Mamdani pada Logika Fuzzy menghasilkan output :</h4>
+          <div class="ml-auto mr-auto">
+            @if(count($list['show']) > 0)
+            @foreach($list['show'] as $item)
             <div class="card card-login">
-              <div class="card-header card-header-primary text-center">
-                <b><h3>NULL</h3></b>
+              <div class="card-header card-header-primary text-center">  
+                <h1>{{ $item->nama }}</h1>
+                </div>
               </div>
-            </div>
+              <h3>< {{ $item->kategori }} ></h3>
+              <h4>Ditetapkan Pada : {{ $item->created_at }}</h4>
+            @endforeach
+            @else
+            <u><h1 class="text-primary">Hasil Tidak Ditemukan</h1></u>
+            @endif
           </div>
         </div>
       </div>
     </div>
   </div>
   <hr>
-  <div class="section section-white">
+  <div class="section section-penilaian">
     <div class="container">
       <div id="navigation-pills">
         <div class="title">

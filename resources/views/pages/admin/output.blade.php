@@ -123,7 +123,7 @@
                             <td>{{ $i }}</td>
                             <td>{{ $items }}</td>
                         </tr>
-                        @if ($i == count($item['predikat']) - 4)
+                        @if ($i == count($item['predikat']) - 11)
                             @break
                         @endif
                         @php

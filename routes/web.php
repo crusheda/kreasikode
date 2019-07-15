@@ -14,10 +14,6 @@ Route::get('/elements', function () {
     return view('pages.user.contoh');
 });
 
-Route::get('/', function () {
-    return view('pages.user.index');
-})->name('home');
-
 Route::get('/demos', function () {
     return view('index');
 });
@@ -26,9 +22,10 @@ Route::get('/demos', function () {
 // });
 
 Auth::routes();
+Route::get('/', 'indexcontroller@index')->name('home');
 Route::get('/admin/login','LoginController@index')->name('admin.login');
 Route::get('/admin', 'HomeController@index')->name('admin');
-Route::get('/admin/grafik', 'HomeController@grafik')->name('admin');
+Route::get('/admin/grafik', 'HomeController@grafik')->name('grafik');
 Route::get('/mamdani/hitung','MamdaniController@index')->name('grafik');
 // Route::post('/mamdani/hitung', 'MamdaniController@index')->name('output');
 Route::get('/mamdani/hitung/simpan', 'MamdaniController@simpanOutput')->name('simpanOutput');

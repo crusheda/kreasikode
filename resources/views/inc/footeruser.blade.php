@@ -32,10 +32,18 @@ $(document).ready(function() {
 });
 
 
-function scrollToDownload() {
-    if ($('.section-download').length != 0) {
+function scrollToHasil() {
+    if ($('.section-hasil').length != 0) {
     $("html, body").animate({
-        scrollTop: $('.section-download').offset().top
+        scrollTop: $('.section-hasil').offset().top
+    }, 1000);
+    }
+}
+
+function scrollToShow() {
+    if ($('.section-penilaian').length != 0) {
+    $("html, body").animate({
+        scrollTop: $('.section-penilaian').offset().top
     }, 1000);
     }
 }

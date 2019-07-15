@@ -88,10 +88,11 @@
                     <div class="card-body">
                         <h5 align="center">History Karyawan Berprestasi</h5>
                         <div class="table-responsive">
-                            <table id="tabelhistory" class="table">
+                            <table id="tabeloutput" class="table">
                                 <thead>
                                     <tr align="center">
                                         <th rowspan="2">No</th>
+                                        <th rowspan="2">ID Karyawan</th>
                                         <th rowspan="2">Nama Karyawan</th>
                                         <th colspan="3">Disiplin</th>
                                         <th colspan="3">Tanggungjawab</th>
@@ -111,6 +112,33 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @if(count($list['output']) > 0)
+                                    @foreach($list['output'] as $item)
+                                        <tr>
+                                            <td>{{ $item->id }}</td>
+                                            <td>{{ $item->id_karyawan }}</td>
+                                            <td>{{ $item->nama }}</td>
+                                            <td>{{ $item->dspburuk }}</td>
+                                            <td>{{ $item->dspcukup }}</td>
+                                            <td>{{ $item->dspbaik }}</td>
+                                            <td>{{ $item->tjbjelek }}</td>
+                                            <td>{{ $item->tjblumayan }}</td>
+                                            <td>{{ $item->tjbbagus }}</td>
+                                            <td>{{ $item->pnsburuk }}</td>
+                                            <td>{{ $item->pnscukup }}</td>
+                                            <td>{{ $item->pnsbaik }}</td>
+                                            <td>
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modaloutput{{ $item->id }}">
+                                                    Tampil
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    @else
+                                        <tr>
+                                            <td>Tidak Ada Data</td>
+                                        </tr>
+                                    @endif
                                 </tbody>
                             </table>
                         </div>
@@ -132,38 +160,60 @@
                 </button>
             </div>
             <div class="modal-body">
-                {{-- <table class="table">
-                    <thead>
-                        <tr>
-                            <th >Role ke-</th>
-                            <th >Nilai</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @php
-                            $i = 1
-                        @endphp
-                        @foreach($item['predikat'] as $key => $items)
-                        <tr>
-                            <td>{{ $i }}</td>
-                            <td>{{ $items }}</td>
-                        </tr>
-                        @if ($i == count($item['predikat']) - 4)
-                            @break
-                        @endif
-                        @php
-                            $i++
-                        @endphp
-                        @endforeach
-                    </tbody>
-                </table> --}}
                 <hr>
-                <h5 class="modal-title" id="exampleModalLongTitle">Komposisi Aturan :</h5>
+                <h5 class="modal-title">Nilai Max Untuk Komposisi Aturan :</h5>
                 <p>Max Buruk : <b>{{ $item->maxburuk }}</b></p>
                 <p>Max Baik : <b>{{ $item->maxbaik }}</b></p>
-                <h5 class="modal-title" id="exampleModalLongTitle">Nilai Keanggotaan :</h5>
+                <h5 class="modal-title">Penentuan Komposisi Aturan :</h5>
+                <p>Z1 : <b>{{ $item->z1 }}</b></p>
+                <p>Z2 : <b>{{ $item->z2 }}</b></p>
+                <h5 class="modal-title">Penentuan Momen Untuk Setiap Daerah :</h5>
+                <p>M1 : <b>{{ $item->m1 }}</b></p>
+                <p>M2 : <b>{{ $item->m2 }}</b></p>
+                <p>M3 : <b>{{ $item->m3 }}</b></p>
+                <h5 class="modal-title">Penentuan Area Untuk Setiap Daerah :</h5>
                 <p>A1 : <b>{{ $item->a1 }}</b></p>
                 <p>A2 : <b>{{ $item->a2 }}</b></p>
+                <p>A3 : <b>{{ $item->a3 }}</b></p>
+                <h5 class="modal-title">Penentuan Titik Pusat Dari Daerah Fuzzy :</h5>
+                <p>Z : <b>{{ $item->z }}</b></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+@endforeach
+
+@foreach($list['output'] as $item)
+<div class="modal fade bd-example-modal-sm" id="modaloutput{{ $item->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <p class="modal-title" id="exampleModalLongTitle">Hasil Predikat Untuk Karyawan : <br><b>{{ $item->nama }}</b></p>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <hr>
+                <h5 class="modal-title">Nilai Max Untuk Komposisi Aturan :</h5>
+                <p>Max Buruk : <b>{{ $item->maxburuk }}</b></p>
+                <p>Max Baik : <b>{{ $item->maxbaik }}</b></p>
+                <h5 class="modal-title">Penentuan Komposisi Aturan :</h5>
+                <p>Z1 : <b>{{ $item->z1 }}</b></p>
+                <p>Z2 : <b>{{ $item->z2 }}</b></p>
+                <h5 class="modal-title">Penentuan Momen Untuk Setiap Daerah :</h5>
+                <p>M1 : <b>{{ $item->m1 }}</b></p>
+                <p>M2 : <b>{{ $item->m2 }}</b></p>
+                <p>M3 : <b>{{ $item->m3 }}</b></p>
+                <h5 class="modal-title">Penentuan Area Untuk Setiap Daerah :</h5>
+                <p>A1 : <b>{{ $item->a1 }}</b></p>
+                <p>A2 : <b>{{ $item->a2 }}</b></p>
+                <p>A3 : <b>{{ $item->a3 }}</b></p>
+                <h5 class="modal-title">Penentuan Titik Pusat Dari Daerah Fuzzy :</h5>
+                <p>Z : <b>{{ $item->z }}</b></p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -177,6 +227,14 @@
 <script>
     $(document).ready(function() {
         $('#tabelhitung').dataTable( {
+            paging: true,
+            searching: true
+        } );
+    } );
+</script>
+<script>
+    $(document).ready(function() {
+        $('#tabeloutput').dataTable( {
             paging: true,
             searching: true
         } );

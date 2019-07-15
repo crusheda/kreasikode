@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\karyawan;
 use App\rolefuzzy;
@@ -40,16 +41,70 @@ class MamdaniController extends Controller
             ]);
         }
 
-        foreach ($prestasi as $key => $value) {
-            # code...
-            $hasils[] = $value->z;
+        // Menampilkan Output Karyawan Berprestasi
+        if (count($prestasi) > 0) {
+            foreach ($prestasi as $key => $value) {
+                # code...
+                $hasils[] = $value->z;
+            }
+            $hasil = max($hasils);
+            $getnama = DB::table('output')->where('z', $hasil)->get();
+            foreach ($getnama as $key => $value) {
+                $shownama = $value->nama;
+            }
+            foreach ($prestasi as $key => $value) {
+                if ($value->z == $hasil) {
+                    $showhasil = DB::table('karyawan')->where('nama', $shownama)->get();
+                    foreach($getnama as $key => $value){
+                        $data = new prestasi;
+                        $data->nama = $value->nama;
+                        $data->dspburuk = $value->dspburuk;
+                        $data->dspcukup = $value->dspcukup;
+                        $data->dspbaik = $value->dspbaik;
+                        $data->tjbjelek = $value->tjbjelek;
+                        $data->tjblumayan = $value->tjblumayan;
+                        $data->tjbbagus = $value->tjbbagus;
+                        $data->pnsburuk = $value->pnsburuk;
+                        $data->pnscukup = $value->pnscukup;
+                        $data->pnsbaik = $value->pnsbaik;
+                        $data->maxburuk = $value->maxburuk;
+                        $data->maxbaik = $value->maxbaik;
+                        $data->z1 = $value->z1;
+                        $data->z2 = $value->z2;
+                        $data->m1 = $value->m1;
+                        $data->m2 = $value->m2;
+                        $data->m3 = $value->m3;
+                        $data->a1 = $value->a1;
+                        $data->a2 = $value->a2;
+                        $data->a3 = $value->a3;
+                        $data->z = $value->z;
+                        foreach($showhasil as $key => $value){
+                            $data->id_karyawan = $value->id;
+                            $data->kategori = $value->kategori;
+                            $data->disiplin = $value->disiplin;
+                            $data->tanggungjawab = $value->tanggungjawab;
+                            $data->planningskill = $value->planningskill;
+                        }
+                        $query = prestasi::orderBy('created_at', 'DESC')->get();
+                        if (count($query) == 0) {
+                            # code...
+                            $data->save();
+                        }
+                        elseif(count($query) > 0) {
+                            $bln_prestasi = substr($query[0]->created_at,5,2);
+                            $bln_now = substr(Carbon::now()->toDateString(),5,2);
+                            if ($bln_prestasi != $bln_now) {
+                                $data->save();
+                            }
+                            else {
+                                # will not save anything..
+                            }
+                        }
+                    }
+                }
+            }
         }
-        $hasil = max($hasils);
-        // $showhasil = DB::table('output')->where('z', $hasil);
-        // print_r($showhasil);
         
-        // die();
-
         $query = output::orderBy('created_at', 'DESC')->get();
         $active_button = true;
         if (count($query) > 0) {
@@ -68,16 +123,6 @@ class MamdaniController extends Controller
             'list' => $showdata,
             'active_button' => $active_button
         ];
-        
-        // $save = new prestasi;
-        // $save->id_karyawan = $hasil['id'];
-        // $save->nama = $hasil['nama'];
-        // $save->kategori = $hasil['kategori'];
-        // $save->disiplin = $hasil['disiplin'];
-        // $save->tanggungjawab = $hasil['tanggungjawab'];
-        // $save->planningskill = $hasil['planningskill'];
-
-        // $save->save(); 
 
         return view('pages.admin.output')->with('data', $data);
     }
@@ -141,50 +186,50 @@ class MamdaniController extends Controller
     {
         # code...
         //rendah
-        if ($x == 1) {
+        if ($x <= 10) {
             # code...
             $dspburuk = 1;
         
-        } elseif ($x > 1 && $x < 3) {
+        } elseif ($x > 10 && $x < 50) {
             # code...
-            $dspburuk = (3-$x)/(3-1);
+            $dspburuk = (50-$x)/(50-10);
 
-        } elseif ($x >= 3) {
+        } elseif ($x >= 50) {
             # code...
             $dspburuk = 0;
 
         }
         //sedang
-        if ($x == 1) {
+        if ($x == 10) {
             # code...
             $dspcukup = 0;
 
-        } elseif ($x == 5){
+        } elseif ($x == 100){
             # code...
             $dspcukup = 0;
 
-        } elseif ($x > 1 && $x < 3) {
+        } elseif ($x > 10 && $x < 50) {
             # code...
-            $dspcukup = ($x-1)/(3-1);
+            $dspcukup = ($x-10)/(50-10);
             
-        } elseif ($x > 3 && $x < 5) {
+        } elseif ($x > 50 && $x < 100) {
             # code...
-            $dspcukup = (5-$x)/(5-3);
+            $dspcukup = (100-$x)/(100-50);
 
-        } elseif ($x == 3){
+        } elseif ($x == 50){
             $dspcukup = 1;
         }
 
         //tinggi
-        if ($x <= 3) {
+        if ($x <= 50) {
             # code...
             $dspbaik = 0;
         
-        } elseif ($x > 3 && $x < 5) {
+        } elseif ($x > 50 && $x < 100) {
             # code...
-            $dspbaik = ($x-3)/(5-3);
+            $dspbaik = ($x-50)/(100-50);
 
-        } elseif ($x == 5) {
+        } elseif ($x == 100) {
             # code...
             $dspbaik = 1;
         }
@@ -201,50 +246,50 @@ class MamdaniController extends Controller
     {
         # code...
         //rendah
-        if ($y == 1) {
+        if ($y == 10) {
             # code...
             $tjbjelek = 1;
         
-        } elseif ($y > 1 && $y < 3) {
+        } elseif ($y > 10 && $y < 50) {
             # code...
-            $tjbjelek = (3-$y)/(3-1);
+            $tjbjelek = (50-$y)/(50-10);
 
-        } elseif ($y >= 3) {
+        } elseif ($y >= 50) {
             # code...
             $tjbjelek = 0;
         }
 
         //sedang
-        if ($y == 1) {
+        if ($y == 10) {
             # code...
             $tjblumayan = 0;
 
-        } elseif ($y == 5){
+        } elseif ($y == 100){
             # code...
             $tjblumayan = 0;
         
-        } elseif ($y > 1 && $y < 3) {
+        } elseif ($y > 10 && $y < 50) {
             # code...
-            $tjblumayan = ($y-1)/(3-1);
+            $tjblumayan = ($y-10)/(50-10);
             
-        } elseif ($y > 3 && $y < 5) {
+        } elseif ($y > 50 && $y < 100) {
             # code...
-            $tjblumayan = (5-$y)/(5-3);
+            $tjblumayan = (100-$y)/(100-50);
 
-        } elseif ($y == 3){
+        } elseif ($y == 50){
             $tjblumayan = 1;
         }
 
         //tinggi
-        if ($y <= 3) {
+        if ($y <= 50) {
             # code...
             $tjbbagus = 0;
         
-        } elseif ($y > 3 && $y < 5) {
+        } elseif ($y > 50 && $y < 100) {
             # code...
-            $tjbbagus = ($y-3)/(5-3);
+            $tjbbagus = ($y-50)/(100-50);
 
-        } elseif ($y == 5) {
+        } elseif ($y == 100) {
             # code...
             $tjbbagus = 1;
         }
@@ -261,51 +306,51 @@ class MamdaniController extends Controller
     {
         # code...
         //rendah
-        if ($z == 1) {
+        if ($z == 10) {
             # code...
             $pnsburuk = 1;
         
-        } elseif ($z > 1 && $z < 3) {
+        } elseif ($z > 10 && $z < 50) {
             # code...
-            $pnsburuk = (3-$z)/(3-1);
+            $pnsburuk = (50-$z)/(50-10);
 
-        } elseif ($z >= 3) {
+        } elseif ($z >= 50) {
             # code...
             $pnsburuk = 0;
         }
 
         //sedang
-        if ($z == 1) {
+        if ($z == 10) {
             # code...
             $pnscukup = 0;
 
-        } elseif ($z == 5) {
+        } elseif ($z == 100) {
             # code...
             $pnscukup = 0;
 
-        } elseif ($z > 1 && $z < 3) {
+        } elseif ($z > 10 && $z < 50) {
             # code...
-            $pnscukup = ($z-1)/(3-1);
+            $pnscukup = ($z-10)/(50-10);
             
-        } elseif ($z > 3 && $z < 5) {
+        } elseif ($z > 50 && $z < 100) {
             # code...
-            $pnscukup = (5-$z)/(5-3);
+            $pnscukup = (100-$z)/(100-50);
 
-        } elseif ($z == 3) {
+        } elseif ($z == 50) {
             # code...
             $pnscukup = 1;
         }
 
         //tinggi
-        if ($z <= 3) {
+        if ($z <= 50) {
             # code...
             $pnsbaik = 0;
         
-        } elseif ($z > 3 && $z < 5) {
+        } elseif ($z > 50 && $z < 100) {
             # code...
-            $pnsbaik = ($z-3)/(5-3);
+            $pnsbaik = ($z-50)/(100-50);
 
-        } elseif ($z == 5) {
+        } elseif ($z == 100) {
             # code...
             $pnsbaik = 1;
         }
@@ -372,18 +417,18 @@ class MamdaniController extends Controller
                     $role11,$role13,$role14,$role16,$role19,$role22);
         
         //Nilai Z (Komposisi Aturan) 
-        $z1 = (4 * $maxBuruk) + 1;
-        $z2 = (4 * $maxBaik) + 1;
+        $z1 = (90 * $maxBuruk) + 10;
+        $z2 = (90 * $maxBaik) + 10;
 
         //Nilai M (Penentuan Momen Untuk Setiap Daerah)
-        $m1 = ($maxBuruk / 2) * ($z1 * $z1);
-        $m2 = 1; //Masih Mencari!!!
-        $m3 = ($maxBaik / 2) * ($z2 * $z2);
+        $m1 = (($maxBuruk / 2)*($z1*$z1))-(($maxBuruk / 2)*(0*0));
+        $m2 = ((((1 / 90) / 3) * ($z2*$z2*$z2)) - ((((10 / 90) / 2)) * ($z2*$z2))) - ((((1 / 90) / 3) * ($z1*$z1*$z1)) - ((((10 / 90) / 2)) * ($z1*$z1)));
+        $m3 = (($maxBaik / 2)*(100*100))-(($maxBaik / 2)*($z2*$z2));
 
         //Nilai A (Penentuan Area Untuk Setiap Daerah)
-        $a1 = $z1 * $maxBuruk;
+        $a1 = ($z1-0) * $maxBuruk;
         $a2 = (($maxBuruk + $maxBaik)*($z2 - $z1)) / 2;
-        $a3 = (5 - $maxBaik) * $z2;
+        $a3 = (100 - $z2) * $maxBaik;
         
         //Mencari Titik Pusat Dari Daerah Fuzzy
         $z = ($m1 + $m2 + $m3) / ($a1 + $a2 + $a3);
