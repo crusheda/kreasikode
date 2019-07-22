@@ -186,50 +186,50 @@ class MamdaniController extends Controller
     {
         # code...
         //rendah
-        if ($x <= 10) {
+        if ($x <= 5) {
             # code...
             $dspburuk = 1;
         
-        } elseif ($x > 10 && $x < 50) {
+        } elseif ($x > 5 && $x < 34) {
             # code...
-            $dspburuk = (50-$x)/(50-10);
+            $dspburuk = (34-$x)/(34-5);
 
-        } elseif ($x >= 50) {
+        } elseif ($x >= 34) {
             # code...
             $dspburuk = 0;
 
         }
         //sedang
-        if ($x == 10) {
+        if ($x <= 5) {
             # code...
             $dspcukup = 0;
 
-        } elseif ($x == 100){
+        } elseif ($x >= 46){
             # code...
             $dspcukup = 0;
 
-        } elseif ($x > 10 && $x < 50) {
+        } elseif ($x > 5 && $x < 34) {
             # code...
-            $dspcukup = ($x-10)/(50-10);
+            $dspcukup = ($x-5)/(34-5);
             
-        } elseif ($x > 50 && $x < 100) {
+        } elseif ($x > 34 && $x < 46) {
             # code...
-            $dspcukup = (100-$x)/(100-50);
+            $dspcukup = (46-$x)/(46-34);
 
-        } elseif ($x == 50){
+        } elseif ($x == 34){
             $dspcukup = 1;
         }
 
         //tinggi
-        if ($x <= 50) {
+        if ($x <= 34) {
             # code...
             $dspbaik = 0;
         
-        } elseif ($x > 50 && $x < 100) {
+        } elseif ($x > 34 && $x < 46) {
             # code...
-            $dspbaik = ($x-50)/(100-50);
+            $dspbaik = ($x-34)/(46-34);
 
-        } elseif ($x == 100) {
+        } elseif ($x >= 46) {
             # code...
             $dspbaik = 1;
         }
@@ -246,50 +246,50 @@ class MamdaniController extends Controller
     {
         # code...
         //rendah
-        if ($y == 10) {
+        if ($y <= 40) {
             # code...
             $tjbjelek = 1;
         
-        } elseif ($y > 10 && $y < 50) {
+        } elseif ($y > 40 && $y < 56) {
             # code...
-            $tjbjelek = (50-$y)/(50-10);
+            $tjbjelek = (56-$y)/(56-40);
 
-        } elseif ($y >= 50) {
+        } elseif ($y >= 56) {
             # code...
             $tjbjelek = 0;
         }
 
         //sedang
-        if ($y == 10) {
+        if ($y <= 40) {
             # code...
             $tjblumayan = 0;
 
-        } elseif ($y == 100){
+        } elseif ($y >= 79){
             # code...
             $tjblumayan = 0;
         
-        } elseif ($y > 10 && $y < 50) {
+        } elseif ($y > 40 && $y < 56) {
             # code...
-            $tjblumayan = ($y-10)/(50-10);
+            $tjblumayan = ($y-40)/(56-40);
             
-        } elseif ($y > 50 && $y < 100) {
+        } elseif ($y > 56 && $y < 79) {
             # code...
-            $tjblumayan = (100-$y)/(100-50);
+            $tjblumayan = (90-$y)/(90-50);
 
-        } elseif ($y == 50){
+        } elseif ($y == 56){
             $tjblumayan = 1;
         }
 
         //tinggi
-        if ($y <= 50) {
+        if ($y <= 56) {
             # code...
             $tjbbagus = 0;
         
-        } elseif ($y > 50 && $y < 100) {
+        } elseif ($y > 56 && $y < 79) {
             # code...
-            $tjbbagus = ($y-50)/(100-50);
+            $tjbbagus = ($y-56)/(79-56);
 
-        } elseif ($y == 100) {
+        } elseif ($y >= 79) {
             # code...
             $tjbbagus = 1;
         }
@@ -306,51 +306,51 @@ class MamdaniController extends Controller
     {
         # code...
         //rendah
-        if ($z == 10) {
+        if ($z <= 67) {
             # code...
             $pnsburuk = 1;
         
-        } elseif ($z > 10 && $z < 50) {
+        } elseif ($z > 67 && $z < 90) {
             # code...
-            $pnsburuk = (50-$z)/(50-10);
+            $pnsburuk = (90-$z)/(90-67);
 
-        } elseif ($z >= 50) {
+        } elseif ($z >= 90) {
             # code...
             $pnsburuk = 0;
         }
 
         //sedang
-        if ($z == 10) {
+        if ($z <= 67) {
             # code...
             $pnscukup = 0;
 
-        } elseif ($z == 100) {
+        } elseif ($z >= 90) {
             # code...
             $pnscukup = 0;
 
-        } elseif ($z > 10 && $z < 50) {
+        } elseif ($z > 67 && $z < 90) {
             # code...
-            $pnscukup = ($z-10)/(50-10);
+            $pnscukup = ($z-67)/(90-67);
             
-        } elseif ($z > 50 && $z < 100) {
+        } elseif ($z > 90 && $z < 125) {
             # code...
-            $pnscukup = (100-$z)/(100-50);
+            $pnscukup = (125-$z)/(125-90);
 
-        } elseif ($z == 50) {
+        } elseif ($z == 90) {
             # code...
             $pnscukup = 1;
         }
 
         //tinggi
-        if ($z <= 50) {
+        if ($z <= 90) {
             # code...
             $pnsbaik = 0;
         
-        } elseif ($z > 50 && $z < 100) {
+        } elseif ($z > 90 && $z < 125) {
             # code...
-            $pnsbaik = ($z-50)/(100-50);
+            $pnsbaik = ($z-90)/(125-90);
 
-        } elseif ($z == 100) {
+        } elseif ($z >= 125) {
             # code...
             $pnsbaik = 1;
         }
@@ -417,16 +417,17 @@ class MamdaniController extends Controller
                     $role11,$role13,$role14,$role16,$role19,$role22);
         
         //Nilai Z (Komposisi Aturan) 
-        $z1 = (90 * $maxBuruk) + 10;
-        $z2 = (90 * $maxBaik) + 10;
+        $z1 = (80 * $maxBuruk) + 10;
+        $z2 = (80 * $maxBaik) + 10;
 
         //Nilai M (Penentuan Momen Untuk Setiap Daerah)
-        $m1 = (($maxBuruk / 2)*($z1*$z1))-(($maxBuruk / 2)*(0*0));
-        $m2 = ((((1 / 90) / 3) * ($z2*$z2*$z2)) - ((((10 / 90) / 2)) * ($z2*$z2))) - ((((1 / 90) / 3) * ($z1*$z1*$z1)) - ((((10 / 90) / 2)) * ($z1*$z1)));
+        $m1 = (($maxBuruk / 2)*($z1*$z1))-(($maxBuruk / 2)*(10*10));
+        $m2 = ( (((1 / 80) / 3) * ($z2*$z2*$z2)) - ((((10 / 80) / 2)) * ($z2*$z2)) ) - 
+              ( (((1 / 80) / 3) * ($z1*$z1*$z1)) - ((((10 / 80) / 2)) * ($z1*$z1)) );
         $m3 = (($maxBaik / 2)*(100*100))-(($maxBaik / 2)*($z2*$z2));
 
         //Nilai A (Penentuan Area Untuk Setiap Daerah)
-        $a1 = ($z1-0) * $maxBuruk;
+        $a1 = ($z1-10) * $maxBuruk;
         $a2 = (($maxBuruk + $maxBaik)*($z2 - $z1)) / 2;
         $a3 = (100 - $z2) * $maxBaik;
         

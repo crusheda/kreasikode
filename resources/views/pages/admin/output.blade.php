@@ -78,21 +78,6 @@
             </div>
         </div>
         @endif
-        <div class="row">
-            <div class="col-md-12 stretch-card">
-                <div class="card">
-                    <div class="card-body">
-                        <p class="card-title" align="center">Karyawan Berprestasi Saat Ini</p>
-                        <div class="table-responsive">
-                            <p align="center">Dari hasil perhitungan dengan menggunakan Metode Mamdani, dihasilkan output Karyawan Berprestasi yaitu :</p>
-                            {{-- @foreach ($data['hasil'] as $item) --}}
-                            {{-- <b><h2 align="center">{{ $data['hasil']['nama'] }}</h2></b> --}}
-                            {{-- @endforeach --}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 

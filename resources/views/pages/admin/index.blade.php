@@ -12,7 +12,7 @@
             @if(count($list['show']) > 0)
             @foreach($list['show'] as $item)
               </i><h1 class="text-primary"><i class="mdi mdi-account"></i>{{ $item->nama }}</h1>
-              <h5 class="text-secondary">Ditetapkan Menjadi Karyawan Berprestasi Pada :<br>{{ $item->created_at }}</h5><hr>
+              <h5 class="text-secondary">Ditetapkan Menjadi Karyawan Berprestasi Pada :<br><p>{{ $item->created_at }}</p></h5><hr>
               <h5 class="text-muted">Kategori Pekerjaan : {{ $item->kategori }}</h5>
             @endforeach
             @else

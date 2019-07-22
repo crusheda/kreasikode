@@ -160,7 +160,6 @@
                 </button>
             </div>
             <div class="modal-body">
-                <hr>
                 <h5 class="modal-title">Nilai Max Untuk Komposisi Aturan :</h5>
                 <p>Max Buruk : <b>{{ $item->maxburuk }}</b></p>
                 <p>Max Baik : <b>{{ $item->maxbaik }}</b></p>
@@ -197,7 +196,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <hr>
+                <p align="center">{{ $item->created_at }}</p><hr>
                 <h5 class="modal-title">Nilai Max Untuk Komposisi Aturan :</h5>
                 <p>Max Buruk : <b>{{ $item->maxburuk }}</b></p>
                 <p>Max Baik : <b>{{ $item->maxbaik }}</b></p>

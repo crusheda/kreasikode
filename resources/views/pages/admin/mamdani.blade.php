@@ -29,35 +29,35 @@
                                         <h5 class="mr-2 mb-0">Disiplin</h5><br>
                                         <i class="mdi mdi-numeric-1-box-outline mr-3 icon-lg text-primary"></i>
                                         <div class="d-flex flex-column justify-content-around">
-                                            <small class="mb-1 text-muted">- Buruk <b>> 130</b></small>
-                                            <small class="mb-1 text-muted">- Cukup <b>130 < x < 80</b></small>
-                                            <small class="mb-1 text-muted">- Baik <b>< 50</b></small>
+                                            <small class="mb-1 text-muted">- Buruk</small>
+                                            <small class="mb-1 text-muted">- Cukup</small>
+                                            <small class="mb-1 text-muted">- Baik</small>
                                         </div>
                                     </div>
                                     <div class="d-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
                                         <h5 class="mr-2 mb-0">Tanggungjawab</h5><br>
                                         <i class="mdi mdi-numeric-2-box-outline mr-3 icon-lg text-primary"></i>
                                         <div class="d-flex flex-column justify-content-around">
-                                            <small class="mb-1 text-muted">- Jelek <b>> 120</b></small>
-                                            <small class="mb-1 text-muted">- Lumayan <b>120 < x < 80</b></small>
-                                            <small class="mb-1 text-muted">- Bagus <b>< 40</b></small>
+                                            <small class="mb-1 text-muted">- Jelek</small>
+                                            <small class="mb-1 text-muted">- Lumayan</small>
+                                            <small class="mb-1 text-muted">- Bagus</small>
                                         </div>
                                     </div>
                                     <div class="d-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
                                         <h5 class="mr-2 mb-0">Planning Skill</h5><br>
                                         <i class="mdi mdi-numeric-3-box-outline mr-3 icon-lg text-primary"></i>
                                         <div class="d-flex flex-column justify-content-around">
-                                            <small class="mb-1 text-muted">- Buruk <b>> 150</b></small>
-                                            <small class="mb-1 text-muted">- Cukup <b>150 < x < 100</b></small>
-                                            <small class="mb-1 text-muted">- Baik <b>< 60</b></small>
+                                            <small class="mb-1 text-muted">- Buruk</small>
+                                            <small class="mb-1 text-muted">- Cukup</small>
+                                            <small class="mb-1 text-muted">- Baik</small>
                                         </div>
                                     </div>
                                     <div class="d-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
                                         <h5 class="mr-2 mb-0">Prestasi</h5><br>
                                         <i class="mdi mdi-numeric-4-box-multiple-outline mr-3 icon-lg text-primary"></i>
                                         <div class="d-flex flex-column justify-content-around">
-                                            <small class="mb-1 text-muted">- Buruk <b> A < x < B</b></small>
-                                            <small class="mb-1 text-muted">- Baik <b> B < x < C</b></small>
+                                            <small class="mb-1 text-muted">- Tidak Berprestasi</small>
+                                            <small class="mb-1 text-muted">- Berprestasi</small>
                                         </div>
                                     </div>
                                 </div>
@@ -88,7 +88,6 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Aturan Himpunan Fuzzy</th>
-                                        {{-- <th>α-predikat</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -97,7 +96,6 @@
                                     <tr>
                                         <td>{{ $list->id }}</td>
                                         <td>IF DISIPLIN {{ $list->disiplin }} AND TANGGUNGJAWAB {{ $list->tanggungjawab }} AND PLANNINGSKILL {{ $list->planningskill }} THEN {{ $list->prestasi }}</td>
-                                        {{-- <td>{{ $list->predikat }}</td> --}}
                                     </tr>
                                 @endforeach
                                 @else

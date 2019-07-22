@@ -5,7 +5,7 @@
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title"><i class="mdi mdi-account-plus mr-3 icon-sm text-success"></i>Tambah Data Karyawan</h4>
@@ -38,9 +38,9 @@
                                     <label>Disiplin</label>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text text-dark">Presentase (%) : 1 - 100</span>
+                                        <span class="input-group-text text-dark">Poin : 0 - 50</span>
                                     </div>
-                                    <input type="number" class="form-control" name="disiplin" maxlength="3" max="100" min="1" data-min_max data-min="1" data-max="100">
+                                    <input type="number" class="form-control" name="disiplin" maxlength="3" max="50" min="1" data-min_max data-min="1" data-max="50" placeholder="0 - 50">
                                     <div class="input-group-prepend">
                                         <button type="button" class="btn btn-light" data-toggle="modal" data-target="#modalinfodsp">
                                             <a><i class="mdi mdi-information-outline text-dark"></i></a>
@@ -52,9 +52,9 @@
                                     <label>Tanggungjawab</label>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text text-dark">Presentase (%) : 1 - 100</span>
+                                        <span class="input-group-text text-dark">Poin : 40 - 80</span>
                                     </div>
-                                    <input type="number" class="form-control" name="tanggungjawab" maxlength="3" max="100" min="1" data-min_max data-min="1" data-max="100">
+                                    <input type="number" class="form-control" name="tanggungjawab" maxlength="3" max="80" min="40" data-min_max data-min="1" data-max="80" placeholder="40 - 80">
                                     <div class="input-group-prepend">
                                         <button type="button" class="btn btn-light" data-toggle="modal" data-target="#modalinfotjb">
                                             <a><i class="mdi mdi-information-outline text-dark"></i></a>
@@ -66,9 +66,9 @@
                                     <label>Planningskill</label>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text text-dark">Presentase (%) : 1 - 100</span>
+                                        <span class="input-group-text text-dark">Poin : 60 - 130</span>
                                     </div>
-                                    <input type="number" class="form-control" name="planningskill" maxlength="3" max="100" min="1" data-min_max data-min="1" data-max="100">
+                                    <input type="number" class="form-control" name="planningskill" maxlength="3" max="130" min="60" data-min_max data-min="1" data-max="130" placeholder="60 - 130">
                                     <div class="input-group-prepend">
                                         <button type="button" class="btn btn-light" data-toggle="modal" data-target="#modalinfopns">
                                             <a><i class="mdi mdi-information-outline text-dark"></i></a>
@@ -81,13 +81,6 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="card">
-                    <div class="card-body">
-                    <p class="card-title">Keterangan Karyawan</p>
-                    <p class="text-muted">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores modi beatae laboriosam consequuntur dolorum ullam, maiores molestias quam! Facilis architecto totam laborum incidunt quo eaque atque suscipit animi autem voluptas?</p>
-                </div>
-            </div>
         </div>
     </div>
 </div>
@@ -97,18 +90,18 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle"><i class="mdi mdi-plus-box"></i>Keterangan Presentase 0 - 100 %</h5>
+            <h5 class="modal-title" id="exampleModalLongTitle"><i class="mdi mdi-plus-box"></i>Keterangan Poin 0 - 50</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
             </div>
             <div class="modal-body">
                 <p>
-                    <b>0 - 19 % : </b>   Datang terlambat dan absen tanpa alasan yang jelas<br>
-                    <b>20 - 39 % : </b>   Datang kadang terlambat dan perkiraan absensi > 20%<br>
-                    <b>40 - 59 % : </b>   Selalu hadir tetapi kadang terlambat dan sesekali absen di beberapa kondisi yang bisa diberi toleransi<br>
-                    <b>60 - 79 % : </b>   Selalu hadir tepat waktu, dengan tingkat absensi > 60%<br>
-                    <b>80 - 100 % : </b>   Secara konsisten, selalu hadir tepat waktu, dengan tingkat absensi > 8%<br>
+                    <b>0 - 10 : </b>   Datang terlambat dan absen tanpa alasan yang jelas<br>
+                    <b>10 - 20 : </b>   Datang kadang terlambat dan perkiraan absensi > 20%<br>
+                    <b>20 - 30 : </b>   Selalu hadir tetapi kadang terlambat dan sesekali absen di beberapa kondisi yang bisa diberi toleransi<br>
+                    <b>30 - 40 : </b>   Selalu hadir tepat waktu, dengan tingkat absensi > 60%<br>
+                    <b>40 - 50 : </b>   Secara konsisten, selalu hadir tepat waktu, dengan tingkat absensi > 8%<br>
                 </p>
             </div>
         </div>
@@ -120,18 +113,18 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle"><i class="mdi mdi-plus-box"></i>Keterangan Presentase 0 - 100 %</h5>
+            <h5 class="modal-title" id="exampleModalLongTitle"><i class="mdi mdi-plus-box"></i>Keterangan Poin 40 - 80</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
             </div>
             <div class="modal-body">
                 <p>
-                    <b>0 - 19 % : </b>   Sering kali tidak mengerjakan tugas yang diberikan<br>
-                    <b>20 - 39 % : </b>   Tugas yang diberikan dikerjakan namun kerap kali terlambat  dan banyak ditemui kesalahan<br>
-                    <b>40 - 59 % : </b>   Mengerjakan tugas yang diberikan terkadang terlambat  dan kurang sesuai dengan instruksi yang diberikan namun masih dalam batas yang wajar<br>
-                    <b>60 - 79 % : </b>   Selalu  mengerjakan  tugas  yang  diberikan  dengan  tepat   waktu meskipun sesekali melakukan kesalahan<br>
-                    <b>80 - 100 % : </b>   Selalu  mengerjakan  tugas  yang  diberikan,  mengumpulkan tepat waktu, serta mengerjakan sesuai dengan instruksi yang diberikan<br>
+                    <b>40 - 45 : </b>   Sering kali tidak mengerjakan tugas yang diberikan<br>
+                    <b>46 - 55 : </b>   Tugas yang diberikan dikerjakan namun kerap kali terlambat  dan banyak ditemui kesalahan<br>
+                    <b>56 - 65 : </b>   Mengerjakan tugas yang diberikan terkadang terlambat  dan kurang sesuai dengan instruksi yang diberikan namun masih dalam batas yang wajar<br>
+                    <b>66 - 75 : </b>   Selalu  mengerjakan  tugas  yang  diberikan  dengan  tepat   waktu meskipun sesekali melakukan kesalahan<br>
+                    <b>76 - 80 : </b>   Selalu  mengerjakan  tugas  yang  diberikan,  mengumpulkan tepat waktu, serta mengerjakan sesuai dengan instruksi yang diberikan<br>
                 </p>
             </div>
         </div>
@@ -143,18 +136,18 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle"><i class="mdi mdi-plus-box"></i>Keterangan Presentase 0 - 100 %</h5>
+            <h5 class="modal-title" id="exampleModalLongTitle"><i class="mdi mdi-plus-box"></i>Keterangan Poin 60 - 130</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
             </div>
             <div class="modal-body">
                 <p>
-                    <b>0 - 19 % : </b>   Tidak pernah bekerja tanpa rencana sama sekali<br>
-                    <b>20 - 39 % : </b>   Sering membuat perencanaan dalam bekerja namun sering kali tidak mampu dieksekusi dengan baik<br>
-                    <b>40 - 59 % : </b>   Terkadang tidak mengeksekusi perencanaan kerja dengan baik<br>
-                    <b>60 - 79 % : </b>   Membuat perencanaan kerja dan mengeksekusinya dengan baik<br>
-                    <b>80 - 100 % : </b>   Selalu membuat perencanaan sebelum bekerja serta melakukan monitoring untuk memastikan rencana berjalan dengan baik<br>
+                    <b>60 - 75   : </b>   Tidak pernah bekerja tanpa rencana sama sekali<br>
+                    <b>76 - 89   : </b>   Sering membuat perencanaan dalam bekerja namun sering kali tidak mampu dieksekusi dengan baik<br>
+                    <b>90 - 105  : </b>   Terkadang tidak mengeksekusi perencanaan kerja dengan baik<br>
+                    <b>106 - 119 : </b>   Membuat perencanaan kerja dan mengeksekusinya dengan baik<br>
+                    <b>120 - 130 : </b>   Selalu membuat perencanaan sebelum bekerja serta melakukan monitoring untuk memastikan rencana berjalan dengan baik<br>
                 </p>
             </div>
         </div>

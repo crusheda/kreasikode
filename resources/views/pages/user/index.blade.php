@@ -21,7 +21,7 @@
       <div class="row text-center">
         <div class="col-md-8 ml-auto mr-auto">
           <h2>Karyawan Berprestasi Bulan Ini</h2>
-          <h4>Penghitungan menggunakan Metode Mamdani pada Logika Fuzzy menghasilkan output :</h4>
+          <h4>Penghitungan menggunakan Metode Mamdani pada Logika Fuzzy menghasilkan output :</h4><br>
           <div class="ml-auto mr-auto">
             @if(count($list['show']) > 0)
             @foreach($list['show'] as $item)

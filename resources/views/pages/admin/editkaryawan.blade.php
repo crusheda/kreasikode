@@ -5,7 +5,7 @@
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-12">
                 <div class="card">  
                     <div class="card-body">
                         <h4 class="card-title"><i class="mdi mdi-account-plus mr-3 icon-sm text-success"></i>Ubah Data Karyawan #{{ $list->id }}</h4>
@@ -38,39 +38,32 @@
                                     <label>Disiplin</label>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text">1 - 5</span>
+                                        <span class="input-group-text">Poin 0 - 50</span>
                                     </div>
-                                    <input type="number" class="form-control" name="disiplin" value="{{ $list->disiplin }}" maxlength="1" max="5" min="1" data-min_max data-min="1" data-max="5" placeholder="{{ $list->disiplin }}">
+                                    <input type="number" class="form-control" name="disiplin" value="{{ $list->disiplin }}" maxlength="1" max="50" min="1" data-min_max data-min="1" data-max="50" placeholder="{{ $list->disiplin }}">
                                 </div>
                             </div>
                             <div class="form-group">
                                     <label>Tanggungjawab</label>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text">1 - 5</span>
+                                        <span class="input-group-text">Poin 40 - 80</span>
                                     </div>
-                                    <input type="number" class="form-control" name="tanggungjawab" value="{{ $list->tanggungjawab }}" maxlength="1" max="5" min="1" data-min_max data-min="1" data-max="5" placeholder="{{ $list->tanggungjawab }}">
+                                    <input type="number" class="form-control" name="tanggungjawab" value="{{ $list->tanggungjawab }}" maxlength="1" max="80" min="40" data-min_max data-min="1" data-max="80" placeholder="{{ $list->tanggungjawab }}">
                                 </div>
                             </div>
                             <div class="form-group">
                                     <label>Planningskill</label>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text">1 - 5</span>
+                                        <span class="input-group-text">Poin 60 - 130</span>
                                     </div>
-                                    <input type="number" class="form-control" name="planningskill" value="{{ $list->planningskill }}" maxlength="1" max="5" min="1" data-min_max data-min="1" data-max="5" placeholder="{{ $list->planningskill }}">
+                                    <input type="number" class="form-control" name="planningskill" value="{{ $list->planningskill }}" maxlength="1" max="130" min="60" data-min_max data-min="1" data-max="130" placeholder="{{ $list->planningskill }}">
                                 </div>
                             </div>
                             <button class="btn btn-success">Submit</button>
                         </form>
                     </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card">
-                    <div class="card-body">
-                    <p class="card-title">Keterangan Karyawan</p>
-                    <p class="text-muted">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores modi beatae laboriosam consequuntur dolorum ullam, maiores molestias quam! Facilis architecto totam laborum incidunt quo eaque atque suscipit animi autem voluptas?</p>
                 </div>
             </div>
         </div>
